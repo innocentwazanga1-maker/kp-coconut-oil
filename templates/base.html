@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}KP Coconut Oil{% endblock %}</title>
+    <meta name="description" content="KP Coconut Oil — coconut-based products from Tanzania. Coconut oil, Pilipili ya Nazi, soap and Unga wa Lishe.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=11">
+</head>
+<body>
+<header class="site-header">
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span>Natural coconut products from Tanzania</span>
+            <div>
+                <a href="tel:+255682585815">+255 682 585 815</a>
+                <span class="divider">|</span>
+                <a href="mailto:dkapalata@yahoo.com">dkapalata@yahoo.com</a>
+            </div>
+        </div>
+    </div>
+    <nav class="nav container">
+        <a class="brand" href="{% url 'home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="KP Coconut Oil Logo" class="brand-logo">
+        </a>
+        <button class="menu-toggle" aria-label="Open menu">☰</button>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'products' %}">Products</a>
+            <a href="{% url 'blog' %}">Blog</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'contact' %}">Contact</a>
+            <a class="nav-cta" href="{% url 'contact' %}">Get In Touch</a>
+        </div>
+    </nav>
+</header>
+
+{% if messages %}
+<div class="flash-wrap container">
+    {% for message in messages %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<main>{% block content %}{% endblock %}</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <a class="brand footer-brand" href="{% url 'home' %}">
+                <span class="footer-logo-wrap"><img class="footer-logo" src="{% static 'images/logo.png' %}" alt="KP Coconut Oil"></span>
+            </a>
+            <p>Quality coconut-based products made for everyday life, wellness and great taste.</p>
+            <div class="footer-social">
+                <h4>Follow KP Coconut Oil</h4>
+                <div class="footer-social-links">
+                    <a class="footer-social-link" href="https://www.instagram.com/kp_virgin_coconut_oil/" target="_blank" rel="noopener noreferrer"><span class="footer-social-mark" aria-hidden="true">ig</span>Instagram</a>
+                    <a class="footer-social-link" href="https://www.tiktok.com/search?q=KP%20Virgin%20Coconut%20Oil" target="_blank" rel="noopener noreferrer"><span class="footer-social-mark" aria-hidden="true">♪</span>TikTok</a>
+                    <a class="footer-social-link" href="https://www.facebook.com/100065627073422/" target="_blank" rel="noopener noreferrer"><span class="footer-social-mark" aria-hidden="true">f</span>Facebook</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'products' %}">Products</a>
+            <a href="{% url 'blog' %}">Blog</a>
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+        <div>
+            <h4>Products</h4>
+            <a href="{% url 'products' %}?category=coconut-oil">Coconut Oil</a>
+            <a href="{% url 'products' %}?category=pilipili">Pilipili ya Nazi</a>
+            <a href="{% url 'products' %}?category=soap">Coconut Soap</a>
+            <a href="{% url 'products' %}?category=unga">Unga wa Lishe</a>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>Dar es Salaam, Tanzania</p>
+            <p><a href="mailto:info@kpcoconut.com">info@kpcoconut.com</a></p>
+            <p><a href="tel:+255000000000">+255 XXX XXX XXX</a></p>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">© 2026 KP Coconut Oil. All Rights Reserved.</div>
+    </div>
+</footer>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

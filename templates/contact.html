@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Contact Us | KP Coconut Oil{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">CONTACT US</span>
+        <h1>Let's talk.</h1>
+        <p>Have a question about our products, orders or partnerships? Send us a message.</p>
+    </div>
+</section>
+<section class="section">
+    <div class="container contact-grid">
+        <div class="contact-info">
+            <span class="eyebrow">GET IN TOUCH</span>
+            <h2>We'd love to hear from you.</h2>
+            <p>Use the form or contact KP directly through the details below.</p>
+            <div class="contact-item"><span>☎</span><div><small>Phone</small><strong>+255 XXX XXX XXX</strong></div></div>
+            <div class="contact-item"><span>✉</span><div><small>Email</small><strong>info@kpcoconut.com</strong></div></div>
+            <div class="contact-item"><span>⌖</span><div><small>Location</small><strong>Dar es Salaam, Tanzania</strong></div></div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/kp_virgin_coconut_oil/" target="_blank" rel="noopener">Instagram ↗</a>
+            </div>
+        </div>
+        <div class="form-card">
+            <h3>Send us a message</h3>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div><label>First Name *</label>{{ form.first_name }}</div>
+                    <div><label>Last Name</label>{{ form.last_name }}</div>
+                </div>
+                <div class="form-row">
+                    <div><label>Phone Number</label>{{ form.phone }}</div>
+                    <div><label>Email *</label>{{ form.email }}</div>
+                </div>
+                <div><label>Message *</label>{{ form.message }}</div>
+                <button class="btn btn-primary" type="submit">Submit Message →</button>
+            </form>
+        </div>
+    </div>
+</section>
+<section class="map-placeholder">
+    <div class="container"><div class="map-box"><span>📍</span><strong>KP Coconut Oil</strong><small>Dar es Salaam, Tanzania</small></div></div>
+</section>
+{% endblock %}

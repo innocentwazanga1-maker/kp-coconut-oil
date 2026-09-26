@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Blog | KP Coconut Oil{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <span class="eyebrow">EXPLORE OUR SOCIAL </span>
+        <h1>SEE MORE.</h1>
+        <p>Product updates, everyday moments and the latest from KP Coconut Oil.</p>
+    </div>
+</section>
+<section class="section journal-section">
+    <div class="container">
+        {% if page_obj.object_list %}
+        <div class="journal-grid">
+            {% for post in page_obj %}
+            <article class="journal-card">
+                <blockquote class="instagram-media" data-instgrm-permalink="{{ post.instagram_url }}" data-instgrm-version="14">
+                    <a href="{{ post.instagram_url }}" target="_blank" rel="noopener noreferrer">View this post on Instagram</a>
+                </blockquote>
+            </article>
+            {% endfor %}
+        </div>
+        <script async src="https://www.instagram.com/embed.js"></script>
+        {% if page_obj.has_other_pages %}
+        <nav class="journal-pagination" aria-label="Blog pages">
+            {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">Previous</a>{% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Next</a>{% endif %}
+        </nav>
+        {% endif %}
+        {% else %}
+        <p class="journal-empty">No posts yet. Published Instagram posts will appear here.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

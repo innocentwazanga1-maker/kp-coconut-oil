@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: kp-coconut-oil
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: python manage.py migrate && gunicorn kpwebsite.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "false"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: .onrender.com,localhost,127.0.0.1
+      - key: DATABASE_URL
+        fromDatabase:
+          name: kp-coconut-oil-db
+          property: connectionString
+
+databases:
+  - name: kp-coconut-oil-db
+    databaseName: kp_coconut_oil
+    user: kp_coconut_oil
+    plan: free
